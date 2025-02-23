@@ -3,10 +3,10 @@ package calculator;
 import java.awt.*;
 
 public class MyTextField extends Component{
-    private int x;
-    private int y;
-    private int h;
-    private int w;
+    private final int x;
+    private final int y;
+    private final int h;
+    private final int w;
     private String s;
 
     public MyTextField(int x, int y, int h, int w) {
@@ -24,16 +24,12 @@ public class MyTextField extends Component{
         g2.setColor(Color.GRAY);
         g2.setColor(Color.BLACK);
         String t;
-        if(s.length() > 18){
-            t = s.substring(s.length() - 18);
+        if(s.length() > w / 80 * 5){
+            t = s.substring(s.length() - (w / 80 * 5));
         }
         else t = s;
         g2.drawString(t, x + 2, y + h / 2);
 
-    }
-
-    public boolean isArea(int x, int y){
-        return (this.x <= x && this.y <= y && this.x + w >= x && this.y + h >= y);
     }
 
     public String getContent(){

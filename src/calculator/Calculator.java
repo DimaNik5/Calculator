@@ -9,20 +9,20 @@ import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
 public class Calculator extends JPanel {
-    private final String[] CONTENT = {
-            "H", "C", "<", "/",
-            "7", "8", "9", "*",
-            "4", "5", "6", "-",
-            "1", "2", "3", "+",
-            "A", "0", ",", "="
+    private static final String[] CONTENT = {
+            "H", "C", "<", "(", ")",
+            "7", "8", "9", "*", "/",
+            "4", "5", "6", "+", "-",
+            "1", "2", "3", "%", "^",
+            "A", "0", ".", "=", "√"
     };
-    private final int WIDTH_CONTENT = 4;
-    private final int WIDTH_BUTTON = 70;
-    private final int HEIGHT_BUTTON = 70;
-    private final int WIDTH_SPACE = 7;
-    private final int HEIGHT_SPACE = 7;
-    private final int WIDTH_TEXT_AREA = (WIDTH_BUTTON + WIDTH_SPACE) * WIDTH_CONTENT - WIDTH_SPACE;
-    private final int HEIGHT_TEXT_AREA = 100;
+    private static final int WIDTH_CONTENT = 5;
+    private static final int WIDTH_BUTTON = 70;
+    private static final int HEIGHT_BUTTON = 70;
+    private static final int WIDTH_SPACE = 7;
+    private static final int HEIGHT_SPACE = 7;
+    private static final int WIDTH_TEXT_AREA = (WIDTH_BUTTON + WIDTH_SPACE) * WIDTH_CONTENT - WIDTH_SPACE;
+    private static final int HEIGHT_TEXT_AREA = 100;
 
     private final MyButton[] buttons;
     private final MyTextField textField;
@@ -102,8 +102,7 @@ public class Calculator extends JPanel {
     @Override
     public void paint(Graphics g){
         super.paint(g);
-        g.setFont(new Font("Sans", 1, 30));
-        g.drawRect(0, 0, 325, 512);
+        g.setFont(new Font("Sans", Font.BOLD, 30));
         textField.paint(g);
         for (MyButton button : buttons) {
             button.paint(g);
@@ -112,7 +111,7 @@ public class Calculator extends JPanel {
 
     private void input(char c) {
         String s = String.valueOf(c);
-        if ("0123456789+-*/,()".contains(s)) {
+        if ("0123456789+-*/%^√.()".contains(s)) {
             textField.addContent(s);
         } else {
             switch (c) {

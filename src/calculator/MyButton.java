@@ -2,11 +2,11 @@ package calculator;
 
 import java.awt.*;
 public class MyButton extends Component {
-    private int x;
-    private int y;
-    private int h;
-    private int w;
-    private String s;
+    private final int x;
+    private final int y;
+    private final int h;
+    private final int w;
+    private final String s;
 
     public MyButton(int x, int y, int h, int w, String s) {
         this.x = x;
