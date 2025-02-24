@@ -47,6 +47,7 @@ public class Operator {
         }catch (Exception e){
             isCorrect = false;
         }
+        if(Double.isNaN(res)) isCorrect = false;
         return res;
     }
 }

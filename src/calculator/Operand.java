@@ -146,8 +146,9 @@ public class Operand {
         do {
             if ("*/%^".contains(operators.get(i).getOperator())) {
                 Operand o = new Operand();
+                String s = String.valueOf(operators.get(i).calculation(operands.get(i).getValue(), operands.get(i + 1).getValue()));
                 o.setContent(String.valueOf(operators.get(i).calculation(operands.get(i).getValue(), operands.get(i + 1).getValue())));
-                isCorrect = operands.get(i).isCorrect && operands.get(i + 1).isCorrect && operators.get(i).isCorrect();
+                isCorrect = operands.get(i).isCorrect && operands.get(i + 1).isCorrect && operators.get(i).isCorrect() && isCorrect;
                 operators.remove(i);
                 operands.add(i, o);
                 operands.remove(i + 1);
